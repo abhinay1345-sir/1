@@ -4,8 +4,23 @@ import os from 'os';
 
 dotenv.config();
 
-const DRIVE_MOUNT = process.env.DRIVE_MOUNT || path.join(os.homedir(), 'gdrive');
-const OUTPUT_BASE = process.env.OUTPUT_BASE || path.join(DRIVE_MOUNT, 'documentary-factory');
+const homedir = os.homedir();
+
+function resolvePath(p) {
+  if (!p) return '';
+  // Expand tilde
+  if (p.startsWith('~')) {
+    return path.join(homedir, p.slice(1));
+  }
+  // If relative, resolve from home
+  if (!path.isAbsolute(p)) {
+    return path.join(homedir, p);
+  }
+  return p;
+}
+
+const DRIVE_MOUNT = resolvePath(process.env.DRIVE_MOUNT);
+const OUTPUT_BASE = resolvePath(process.env.OUTPUT_BASE || path.join('gdrive', 'documentary-factory'));
 
 export default {
   // Paths on Google Drive

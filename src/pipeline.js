@@ -4,7 +4,7 @@
  * Documentary Factory - Main Pipeline Orchestrator
  *
  * This script runs the full documentary creation pipeline.
- * All generated files are saved to Google Drive.
+ * All generated files are saved to Google Drive (with local /tmp mirrors for reliability).
  *
  * Usage:
  *   npm run create -- --topic "Steve Jobs"
@@ -14,13 +14,12 @@
 import argparse from 'argparse';
 import fs from 'fs';
 import path from 'path';
-import os from 'os';
-import { spawn } from 'child_process';
 
 import { createProject, loadState, saveState, getProjectPath, listProjects } from './lib/drive.js';
 import topicHunter from './agents/01_topic_hunter.js';
 import researcher from './agents/02_researcher.js';
 import scriptwriter from './agents/03_scriptwriter.js';
+import assetCollector from './agents/04_asset_collector.js';
 import audioDesigner from './agents/05_audio_designer.js';
 import editor from './agents/06_editor.js';
 
@@ -44,7 +43,7 @@ parser.add_argument('--project', {
 });
 
 parser.add_argument('--agent', {
-  help: 'Agent to run (for agent mode): 01, 02, 03, 05, 06'
+  help: 'Agent to run (for agent mode): 01, 02, 03, 04, 05, 06'
 });
 
 parser.add_argument('--category', {
@@ -58,6 +57,11 @@ parser.add_argument('--duration', {
   help: 'Target duration in minutes'
 });
 
+parser.add_argument('--skip-checkpoint', {
+  action: 'store_true',
+  help: 'Skip the 5s script review pause and 3s asset review pause'
+});
+
 const args = parser.parse_args();
 
 /**
@@ -67,8 +71,8 @@ async function runFullPipeline(topic, category, duration) {
   console.log('\n' + '='.repeat(70));
   console.log('🎬 DOCUMENTARY FACTORY - Starting New Project');
   console.log('='.repeat(70));
-  console.log(`\n📝 Topic: ${topic}`);
-  console.log(`📁 Category: ${category}`);
+  console.log(`\n📌 Topic: ${topic}`);
+  console.log(`📂 Category: ${category}`);
   console.log(`⏱️  Target Duration: ${duration} minutes`);
   console.log(`💾 Output: ~/gdrive/documentary-factory/projects/`);
 
@@ -88,58 +92,77 @@ async function runFullPipeline(topic, category, duration) {
   scriptwriter.displayScript(script);
 
   console.log('\n⏸️  CHECKPOINT: Review the script above.');
-  console.log('   - If you approve, the pipeline will continue to audio generation.');
+  console.log('   - If you approve, the pipeline will continue.');
   console.log('   - Press Ctrl+C to stop and make changes.\n');
 
-  // Wait 5 seconds for user to review
-  await new Promise(resolve => setTimeout(resolve, 5000));
+  if (!args.skip_checkpoint) {
+    await new Promise(resolve => setTimeout(resolve, 5000));
+  }
+
+  // Agent 4: Asset Collector (Phase 2)
+  const { manifest } = await assetCollector.run(projectId);
+  assetCollector.displayAssets(manifest);
+
+  console.log('\n⏸️  ASSET CHECKPOINT: Review assets above.');
+  if (!args.skip_checkpoint) {
+    await new Promise(resolve => setTimeout(resolve, 3000));
+  }
 
   // Agent 5: Audio Designer
   await audioDesigner.run(projectId);
 
-  // Agent 6: Editor (MVP)
-  const { videoPath } = await editor.run(projectId);
+  // Agent 6: Editor (Ken Burns)
+  const { videoPath, localPath } = await editor.run(projectId);
 
   console.log('\n' + '='.repeat(70));
   console.log('✅ DOCUMENTARY COMPLETE');
   console.log('='.repeat(70));
   console.log(`\n📁 Project: ${projectId}`);
-  console.log(`🎬 Video: ${videoPath}`);
+  console.log(`🎥 Video (Drive): ${videoPath}`);
+  if (localPath) {
+    console.log(`💾 Video (local): ${localPath}`);
+  }
   console.log(`📂 All files: ~/gdrive/documentary-factory/projects/${projectId}/`);
-  console.log('\n💡 Next steps:');
-  console.log('   1. Download the video from Drive');
+  console.log('\n🚀 Next steps:');
+  console.log('   1. Download the video (prefer local path if Drive is flaky)');
   console.log('   2. Upload to YouTube manually');
   console.log('   3. Add thumbnails, tags, and description\n');
 
-  return { projectId, videoPath };
+  return { projectId, videoPath, localPath };
 }
 
 /**
  * Resume an interrupted project
  */
 async function resumeProject(projectId) {
-  console.log(`\n🔄 Resuming project: ${projectId}`);
+  console.log(`\n▶️  Resuming project: ${projectId}`);
 
   const state = loadState(projectId);
   console.log(`   Current status: ${state.status}`);
   console.log(`   Current agent: ${state.current_agent || 'none'}`);
 
-  // Find next pending agent
   const agents = [
     { name: 'agent_02_researcher', run: () => researcher.run(projectId) },
     { name: 'agent_03_scriptwriter', run: () => scriptwriter.run(projectId) },
+    { name: 'agent_04_asset_collector', run: () => assetCollector.run(projectId) },
     { name: 'agent_05_audio_designer', run: () => audioDesigner.run(projectId) },
     { name: 'agent_06_editor', run: () => editor.run(projectId) },
   ];
 
   for (const agent of agents) {
-    if (state.agents[agent.name].status !== 'completed') {
+    const agentState = state.agents[agent.name];
+    if (!agentState || agentState.status !== 'completed') {
       console.log(`\n▶️  Running: ${agent.name}`);
       await agent.run();
+      // Reload state after each agent
+      Object.assign(state, loadState(projectId));
+    } else {
+      console.log(`   ⏭️  Skipping ${agent.name} (already completed)`);
     }
   }
 
   console.log('\n✅ Pipeline resumed successfully');
+  console.log(`   Local video (if rendered): /tmp/docfactory_output/final_video.mp4`);
 }
 
 /**
@@ -150,23 +173,19 @@ async function runSpecificAgent(projectId, agentNum) {
     '01': topicHunter,
     '02': researcher,
     '03': scriptwriter,
+    '04': assetCollector,
     '05': audioDesigner,
     '06': editor,
   };
 
   const agent = agents[agentNum];
   if (!agent) {
-    console.error(`Unknown agent: ${agentNum}`);
+    console.error(`Unknown agent: ${agentNum}. Valid: 01, 02, 03, 04, 05, 06`);
     process.exit(1);
   }
 
-  console.log(`\n🎯 Running Agent ${agentNum} on project: ${projectId}`);
-
-  if (agentNum === '01') {
-    await agent.run(projectId);
-  } else {
-    await agent.run(projectId);
-  }
+  console.log(`\n▶️  Running Agent ${agentNum} on project: ${projectId}`);
+  await agent.run(projectId);
 }
 
 /**
@@ -183,11 +202,15 @@ function listAllProjects() {
   }
 
   projects.forEach(projectId => {
-    const state = loadState(projectId);
-    const status = state.status || 'unknown';
-    const created = state.created_at ? new Date(state.created_at).toLocaleDateString() : 'unknown';
-    console.log(`   ${projectId}`);
-    console.log(`      Status: ${status} | Created: ${created}\n`);
+    try {
+      const state = loadState(projectId);
+      const status = state.status || 'unknown';
+      const created = state.created_at ? new Date(state.created_at).toLocaleDateString() : 'unknown';
+      console.log(`   ${projectId}`);
+      console.log(`      Status: ${status} | Created: ${created}\n`);
+    } catch (e) {
+      console.log(`   ${projectId} (state unreadable)\n`);
+    }
   });
 }
 

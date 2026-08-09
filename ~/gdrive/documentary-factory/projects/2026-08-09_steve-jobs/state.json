@@ -1,0 +1,44 @@
+{
+  "project_id": "2026-08-09_steve-jobs",
+  "topic_slug": "steve-jobs",
+  "status": "created",
+  "created_at": "2026-08-09T12:30:00.892Z",
+  "current_agent": "agent_06_editor",
+  "agents": {
+    "agent_01_topic_hunter": {
+      "status": "completed",
+      "updated_at": "2026-08-09T12:30:00.895Z",
+      "output_file": "~/gdrive/documentary-factory/projects/2026-08-09_steve-jobs/01_topic.json",
+      "completed_at": "2026-08-09T12:30:00.895Z"
+    },
+    "agent_02_researcher": {
+      "status": "completed",
+      "updated_at": "2026-08-09T12:30:02.495Z",
+      "output_file": "~/gdrive/documentary-factory/projects/2026-08-09_steve-jobs/02_research.md",
+      "completed_at": "2026-08-09T12:30:02.495Z"
+    },
+    "agent_03_scriptwriter": {
+      "status": "completed",
+      "updated_at": "2026-08-09T12:30:02.496Z",
+      "output_file": "~/gdrive/documentary-factory/projects/2026-08-09_steve-jobs/03_script.json",
+      "segments": 7,
+      "total_duration_seconds": 298,
+      "completed_at": "2026-08-09T12:30:02.496Z"
+    },
+    "agent_04_asset_collector": {
+      "status": "pending"
+    },
+    "agent_05_audio_designer": {
+      "status": "completed",
+      "updated_at": "2026-08-09T12:30:22.842Z",
+      "audio_files": 7,
+      "completed_at": "2026-08-09T12:30:22.842Z"
+    },
+    "agent_06_editor": {
+      "status": "in_progress",
+      "updated_at": "2026-08-09T12:30:22.843Z"
+    }
+  },
+  "retries": 0,
+  "errors": []
+}

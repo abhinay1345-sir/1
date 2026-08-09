@@ -1,0 +1,193 @@
+{
+  "title": "Test Documentary: A Documentary",
+  "total_duration_seconds": 300,
+  "target_duration_minutes": 5,
+  "segments": [
+    {
+      "id": "segment_01",
+      "title": "Introduction",
+      "narration": "In the story of Test Documentary, opening hook and overview stands as a defining chapter. # Research Summary: Test Documentary This was only the beginning of what would become an extraordinary legacy.",
+      "duration_seconds": 43,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Test Documentary, introduction, opening hook and overview, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Test Documentary opening hook and overview, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Test Documentary historical footage, introduction, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "contemplative, building anticipation",
+      "sfx": [
+        "subtle_ambient",
+        "page_turn"
+      ],
+      "actual_duration": 0
+    },
+    {
+      "id": "segment_02",
+      "title": "Early Life & Background",
+      "narration": "When we examine Test Documentary, we find that origins and formative years reveals the true character of this remarkable journey. ## Key Information Extracted But the story doesn't end here — greater challenges and triumphs lay ahead.",
+      "duration_seconds": 42,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Test Documentary, early life & background, origins and formative years, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Test Documentary origins and formative years, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Test Documentary historical footage, early life & background, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "gentle, nostalgic",
+      "sfx": [
+        "fireplace_crackle",
+        "quill_writing"
+      ],
+      "actual_duration": 0
+    },
+    {
+      "id": "segment_03",
+      "title": "Key Turning Point",
+      "narration": "Pivotal moment or discovery shaped Test Documentary in ways that still resonate today. The Test, known as The Test: A New Era for Australia's Team in its first season, is an Australian docu-series, produced by Amazon Studios for Amazon Prime Video,[1] and co-produced by Cricket Australi... The impact of these moments would echo through generations to come.",
+      "duration_seconds": 41,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Test Documentary, key turning point, pivotal moment or discovery, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Test Documentary pivotal moment or discovery, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Test Documentary historical footage, key turning point, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "dramatic, rising tension",
+      "sfx": [
+        "heartbeat",
+        "clock_tick"
+      ],
+      "actual_duration": 0
+    },
+    {
+      "id": "segment_04",
+      "title": "Major Achievements",
+      "narration": "In the story of Test Documentary, primary accomplishments stands as a defining chapter. The docu-series follows the Australian men's cricket team. The first season follows the team's path to redemption under the leadership of captain Tim Paine and head coach Justin Langer in the 18 month... This was only the beginning of what would become an extraordinary legacy.",
+      "duration_seconds": 40,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Test Documentary, major achievements, primary accomplishments, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Test Documentary primary accomplishments, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Test Documentary historical footage, major achievements, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "inspiring, triumphant",
+      "sfx": [
+        "crowd_applause",
+        "bell_chime"
+      ],
+      "actual_duration": 0
+    },
+    {
+      "id": "segment_05",
+      "title": "Challenges Overcome",
+      "narration": "When we examine Test Documentary, we find that struggles and obstacles reveals the true character of this remarkable journey. An edited, feature-length version of the first season aired on the Seven Network on 4 October 2020.[9]...... But the story doesn't end here — greater challenges and triumphs lay ahead.",
+      "duration_seconds": 47,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Test Documentary, challenges overcome, struggles and obstacles, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Test Documentary struggles and obstacles, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Test Documentary historical footage, challenges overcome, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "somber, reflective",
+      "sfx": [
+        "storm_wind",
+        "distant_thunder"
+      ],
+      "actual_duration": 0
+    },
+    {
+      "id": "segment_06",
+      "title": "Impact & Legacy",
+      "narration": "Lasting influence on the world shaped Test Documentary in ways that still resonate today. The first season is a behind-the-scenes look at the Australian men's team's fall from grace and its path to regain its integrity in the 18 months after the 2018 ball-tampering scandal.[2]...... The impact of these moments would echo through generations to come.",
+      "duration_seconds": 43,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Test Documentary, impact & legacy, lasting influence on the world, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Test Documentary lasting influence on the world, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Test Documentary historical footage, impact & legacy, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "hopeful, uplifting",
+      "sfx": [
+        "orchestral_swell",
+        "choir_hum"
+      ],
+      "actual_duration": 0
+    },
+    {
+      "id": "segment_07",
+      "title": "Later Years",
+      "narration": "In the story of Test Documentary, final chapter and reflection stands as a defining chapter. The series begins with the 2018 Australian ball-tampering scandal which rocks Australian cricket, the subsequent press conferences, and the bans from play for those found involved: captain Steve Smith... In the end, test documentary reminds us that one person's vision can change the world.",
+      "duration_seconds": 44,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Test Documentary, later years, final chapter and reflection, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Test Documentary final chapter and reflection, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Test Documentary historical footage, later years, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "peaceful, resolved",
+      "sfx": [
+        "rain_gentle",
+        "wind_chimes"
+      ],
+      "actual_duration": 0
+    }
+  ],
+  "voice_settings": {
+    "voice": "en-US-GuyNeural",
+    "speed": 0.95
+  }
+}

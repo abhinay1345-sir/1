@@ -1,0 +1,193 @@
+{
+  "title": "Steve Jobs: A Documentary",
+  "total_duration_seconds": 298,
+  "target_duration_minutes": 5,
+  "segments": [
+    {
+      "id": "segment_01",
+      "title": "Introduction",
+      "narration": "In the story of Steve Jobs, opening hook and overview stands as a defining chapter. # Research Summary: Steve Jobs This was only the beginning of what would become an extraordinary legacy.",
+      "duration_seconds": 38,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Steve Jobs, introduction, opening hook and overview, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Steve Jobs opening hook and overview, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Steve Jobs historical footage, introduction, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "contemplative, building anticipation",
+      "sfx": [
+        "subtle_ambient",
+        "page_turn"
+      ],
+      "actual_duration": 12.888
+    },
+    {
+      "id": "segment_02",
+      "title": "Early Life & Background",
+      "narration": "When we examine Steve Jobs, we find that origins and formative years reveals the true character of this remarkable journey. ## Key Information Extracted But the story doesn't end here — greater challenges and triumphs lay ahead.",
+      "duration_seconds": 42,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Steve Jobs, early life & background, origins and formative years, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Steve Jobs origins and formative years, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Steve Jobs historical footage, early life & background, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "gentle, nostalgic",
+      "sfx": [
+        "fireplace_crackle",
+        "quill_writing"
+      ],
+      "actual_duration": 14.736
+    },
+    {
+      "id": "segment_03",
+      "title": "Key Turning Point",
+      "narration": "Pivotal moment or discovery shaped Steve Jobs in ways that still resonate today. Steven Paul Jobs  (February 24, 1955 – October 5, 2011) was an American businessman, inventor,[2] and investor. A pioneer of the personal computer revolution of the 1970s and 1980s, Jobs co-founded Ap... The impact of these moments would echo through generations to come.",
+      "duration_seconds": 46,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Steve Jobs, key turning point, pivotal moment or discovery, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Steve Jobs pivotal moment or discovery, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Steve Jobs historical footage, key turning point, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "dramatic, rising tension",
+      "sfx": [
+        "heartbeat",
+        "clock_tick"
+      ],
+      "actual_duration": 27.792
+    },
+    {
+      "id": "segment_04",
+      "title": "Major Achievements",
+      "narration": "In the story of Steve Jobs, primary accomplishments stands as a defining chapter. Jobs was born in San Francisco in 1955 and adopted shortly afterward. He went to public schools. He attended Reed College in 1972 before withdrawing that same year. In 1974, he traveled through India,... This was only the beginning of what would become an extraordinary legacy.",
+      "duration_seconds": 46,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Steve Jobs, major achievements, primary accomplishments, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Steve Jobs primary accomplishments, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Steve Jobs historical footage, major achievements, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "inspiring, triumphant",
+      "sfx": [
+        "crowd_applause",
+        "bell_chime"
+      ],
+      "actual_duration": 28.008
+    },
+    {
+      "id": "segment_05",
+      "title": "Challenges Overcome",
+      "narration": "When we examine Steve Jobs, we find that struggles and obstacles reveals the true character of this remarkable journey. He and Wozniak co-founded Apple in 1976 to further develop and sell Wozniak's Apple I personal computer. Together, the duo gained fame and wealth a year later with the production and sale of the Apple... But the story doesn't end here — greater challenges and triumphs lay ahead.",
+      "duration_seconds": 40,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Steve Jobs, challenges overcome, struggles and obstacles, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Steve Jobs struggles and obstacles, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Steve Jobs historical footage, challenges overcome, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "somber, reflective",
+      "sfx": [
+        "storm_wind",
+        "distant_thunder"
+      ],
+      "actual_duration": 25.464
+    },
+    {
+      "id": "segment_06",
+      "title": "Impact & Legacy",
+      "narration": "Lasting influence on the world shaped Steve Jobs in ways that still resonate today. Jobs saw the commercial potential of the Xerox Alto in 1979, which was mouse-driven and had a graphical user interface (GUI). This led to the development of the largely unsuccessful Apple Lisa in 1983... The impact of these moments would echo through generations to come.",
+      "duration_seconds": 43,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Steve Jobs, impact & legacy, lasting influence on the world, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Steve Jobs lasting influence on the world, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Steve Jobs historical footage, impact & legacy, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "hopeful, uplifting",
+      "sfx": [
+        "orchestral_swell",
+        "choir_hum"
+      ],
+      "actual_duration": 24.648
+    },
+    {
+      "id": "segment_07",
+      "title": "Later Years",
+      "narration": "In the story of Steve Jobs, final chapter and reflection stands as a defining chapter. In 1985, Jobs departed Apple after a long power struggle with the company's board and its then-CEO, John Sculley. That same year, Jobs took some Apple employees with him to found NeXT, a computer plat... In the end, steve jobs reminds us that one person's vision can change the world.",
+      "duration_seconds": 43,
+      "visual_prompts": [
+        {
+          "type": "image",
+          "prompt": "Steve Jobs, later years, final chapter and reflection, documentary style, cinematic lighting, historical photograph aesthetic"
+        },
+        {
+          "type": "image",
+          "prompt": "Steve Jobs final chapter and reflection, vintage archival style, sepia tones, Ken Burns documentary aesthetic"
+        },
+        {
+          "type": "clip",
+          "prompt": "Steve Jobs historical footage, later years, archival film, documentary b-roll"
+        }
+      ],
+      "music_mood": "peaceful, resolved",
+      "sfx": [
+        "rain_gentle",
+        "wind_chimes"
+      ],
+      "actual_duration": 25.416
+    }
+  ],
+  "voice_settings": {
+    "voice": "en-US-GuyNeural",
+    "speed": 0.95
+  }
+}
