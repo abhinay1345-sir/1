@@ -1,0 +1,36 @@
+{
+  "project_id": "2026-08-09_test-documentary",
+  "topic_slug": "test-documentary",
+  "status": "created",
+  "created_at": "2026-08-09T11:57:12.892Z",
+  "current_agent": "agent_03_scriptwriter",
+  "agents": {
+    "agent_01_topic_hunter": {
+      "status": "completed",
+      "updated_at": "2026-08-09T11:57:12.894Z",
+      "output_file": "~/gdrive/documentary-factory/projects/2026-08-09_test-documentary/01_topic.json",
+      "completed_at": "2026-08-09T11:57:12.894Z"
+    },
+    "agent_02_researcher": {
+      "status": "completed",
+      "updated_at": "2026-08-09T11:57:27.668Z",
+      "output_file": "~/gdrive/documentary-factory/projects/2026-08-09_test-documentary/02_research.md",
+      "completed_at": "2026-08-09T11:57:27.661Z"
+    },
+    "agent_03_scriptwriter": {
+      "status": "in_progress",
+      "updated_at": "2026-08-09T11:57:27.670Z"
+    },
+    "agent_04_asset_collector": {
+      "status": "pending"
+    },
+    "agent_05_audio_designer": {
+      "status": "pending"
+    },
+    "agent_06_editor": {
+      "status": "pending"
+    }
+  },
+  "retries": 0,
+  "errors": []
+}

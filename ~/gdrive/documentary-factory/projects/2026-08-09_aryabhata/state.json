@@ -1,0 +1,33 @@
+{
+  "project_id": "2026-08-09_aryabhata",
+  "topic_slug": "aryabhata",
+  "status": "created",
+  "created_at": "2026-08-09T11:24:12.167Z",
+  "current_agent": "agent_02_researcher",
+  "agents": {
+    "agent_01_topic_hunter": {
+      "status": "completed",
+      "updated_at": "2026-08-09T11:24:12.168Z",
+      "output_file": "~/gdrive/documentary-factory/projects/2026-08-09_aryabhata/01_topic.json",
+      "completed_at": "2026-08-09T11:24:12.168Z"
+    },
+    "agent_02_researcher": {
+      "status": "in_progress",
+      "updated_at": "2026-08-09T11:24:12.169Z"
+    },
+    "agent_03_scriptwriter": {
+      "status": "pending"
+    },
+    "agent_04_asset_collector": {
+      "status": "pending"
+    },
+    "agent_05_audio_designer": {
+      "status": "pending"
+    },
+    "agent_06_editor": {
+      "status": "pending"
+    }
+  },
+  "retries": 0,
+  "errors": []
+}
