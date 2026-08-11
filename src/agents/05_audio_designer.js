@@ -5,6 +5,33 @@ import { loadState, updateAgentStatus, getProjectPath } from '../lib/drive.js';
 import config from '../../config/index.js';
 
 /**
+ * Minimal concurrency limiter (avoids adding a p-limit dependency).
+ * @param {number} concurrency - Max parallel tasks
+ * @param {Array<T>} items
+ * @param {(item: T, index: number) => Promise<R>} fn
+ * @returns {Promise<Array<R>>} Results in input order (holes preserved)
+ */
+async function mapWithConcurrency(concurrency, items, fn) {
+  const results = new Array(items.length);
+  let next = 0;
+
+  async function worker() {
+    while (next < items.length) {
+      const index = next++;
+      try {
+        results[index] = await fn(items[index], index);
+      } catch (err) {
+        results[index] = undefined;
+      }
+    }
+  }
+
+  const workers = Array.from({ length: Math.min(concurrency, items.length) }, worker);
+  await Promise.all(workers);
+  return results;
+}
+
+/**
  * Agent 5: Audio Designer
  *
  * Generates voice-over using Edge-TTS (free, high quality)
@@ -137,9 +164,9 @@ export async function run(projectId) {
 
   const audioFiles = [];
   const voiceSettings = script.voice_settings || {};
+  const concurrency = config.defaults.audioConcurrency || 3;
 
-  for (let i = 0; i < script.segments.length; i++) {
-    const segment = script.segments[i];
+  const results = await mapWithConcurrency(concurrency, script.segments, async (segment, i) => {
     const segmentNum = String(i + 1).padStart(2, '0');
     const audioPath = `${projectPath}/05_audio/voiceover/segment_${segmentNum}.wav`;
     const localPath = path.join(localAudioDir, `segment_${segmentNum}.wav`);
@@ -152,8 +179,7 @@ export async function run(projectId) {
           console.log(`   🎤 Segment ${segmentNum}: already exists (${dur.toFixed(1)}s), skipping`);
           fs.copyFileSync(audioPath, localPath);
           segment.actual_duration = dur;
-          audioFiles.push(localPath);
-          continue;
+          return { segmentNum, localPath };
         }
       } catch (_) {}
     }
@@ -166,16 +192,19 @@ export async function run(projectId) {
       segment.actual_duration = duration;
 
       // Prefer local path for downstream reliability
-      if (fs.existsSync(localPath)) {
-        audioFiles.push(localPath);
-      } else {
-        audioFiles.push(resultPath);
-      }
+      const finalLocal = fs.existsSync(localPath) ? localPath : resultPath;
       console.log(`      ✅ ${duration.toFixed(1)}s`);
+      return { segmentNum, localPath: finalLocal };
     } catch (error) {
       console.error(`      ⚠️ Failed: ${error.message}`);
       segment.actual_duration = 0;
+      return null;
     }
+  });
+
+  // Preserve segment order for the editor's manifest (skip failed/null)
+  for (const r of results) {
+    if (r) audioFiles.push(r.localPath);
   }
 
   // Update script with actual durations

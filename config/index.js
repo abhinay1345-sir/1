@@ -45,6 +45,7 @@ export default {
     voiceSpeed: 0.95,
     videoFps: 30,
     videoResolution: '1920x1080',
+    audioConcurrency: 3,  // parallel edge-tts segments
   },
 
   // Agent timeouts

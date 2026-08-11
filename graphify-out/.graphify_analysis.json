@@ -1,0 +1,303 @@
+{
+  "communities": {
+    "0": [
+      "package",
+      "package_author",
+      "package_description",
+      "package_engines",
+      "package_engines_node",
+      "package_keywords",
+      "package_license",
+      "package_main",
+      "package_name",
+      "package_scripts",
+      "package_scripts_agent",
+      "package_scripts_create",
+      "package_scripts_install_browsers",
+      "package_scripts_preview",
+      "package_scripts_render",
+      "package_scripts_resume",
+      "package_scripts_scrape",
+      "package_type",
+      "package_version",
+      "ref_ai",
+      "ref_automation",
+      "ref_documentary",
+      "ref_video"
+    ],
+    "1": [
+      "src_agents_01_topic_hunter",
+      "src_agents_01_topic_hunter_createslug",
+      "src_agents_01_topic_hunter_run",
+      "src_agents_03_scriptwriter",
+      "src_agents_03_scriptwriter_displayscript",
+      "src_agents_03_scriptwriter_run",
+      "src_agents_05_audio_designer",
+      "src_agents_05_audio_designer_generatetts",
+      "src_agents_05_audio_designer_getaudioduration",
+      "src_agents_05_audio_designer_mapwithconcurrency",
+      "src_agents_05_audio_designer_run",
+      "src_lib_drive",
+      "src_lib_drive_createproject",
+      "src_lib_drive_getprojectpath",
+      "src_lib_drive_isdrivemounted",
+      "src_lib_drive_loadstate",
+      "src_lib_drive_savebinary",
+      "src_lib_drive_savejson",
+      "src_lib_drive_savestate",
+      "src_lib_drive_savetext",
+      "src_lib_drive_updateagentstatus"
+    ],
+    "2": [
+      "src_agents_02_researcher",
+      "src_agents_02_researcher_run",
+      "src_agents_02_researcher_scrapewikipedia",
+      "src_lib_cache",
+      "src_lib_cache_cacheasync",
+      "src_lib_cache_cacheget",
+      "src_lib_cache_cachekey",
+      "src_lib_cache_cacheset",
+      "src_lib_cache_ensuredir",
+      "src_lib_llm",
+      "src_lib_llm_callclaude",
+      "src_lib_llm_extractdates",
+      "src_lib_llm_extractnames",
+      "src_lib_llm_extractquotes",
+      "src_lib_llm_generatenarration",
+      "src_lib_llm_generatescript",
+      "src_lib_llm_generatevisualprompts",
+      "src_lib_llm_getmusicmood",
+      "src_lib_llm_getsfx",
+      "src_lib_llm_summarizeresearch"
+    ],
+    "3": [
+      "anthropic_ai_sdk",
+      "argparse",
+      "axios",
+      "dotenv",
+      "fluent_ffmpeg",
+      "package_dependencies",
+      "package_dependencies_anthropic_ai_sdk",
+      "package_dependencies_argparse",
+      "package_dependencies_axios",
+      "package_dependencies_dotenv",
+      "package_dependencies_fluent_ffmpeg",
+      "package_dependencies_pexels",
+      "package_dependencies_playwright",
+      "package_dependencies_uuid",
+      "pexels",
+      "playwright",
+      "uuid"
+    ],
+    "4": [
+      "src_agents_06_editor",
+      "src_agents_06_editor_collectaudiofiles",
+      "src_agents_06_editor_concatenateaudio",
+      "src_agents_06_editor_createblackclip",
+      "src_agents_06_editor_createkenburnsclip",
+      "src_agents_06_editor_getaudioduration",
+      "src_agents_06_editor_getimagesize",
+      "src_agents_06_editor_kenburnsfilter",
+      "src_agents_06_editor_loadassetmanifest",
+      "src_agents_06_editor_resolveimagepath",
+      "src_agents_06_editor_run",
+      "src_agents_06_editor_runffmpeg"
+    ],
+    "5": [
+      "src_agents_04_asset_collector",
+      "src_agents_04_asset_collector_buildquery",
+      "src_agents_04_asset_collector_createcolorplaceholder",
+      "src_agents_04_asset_collector_createtitlecard",
+      "src_agents_04_asset_collector_displayassets",
+      "src_agents_04_asset_collector_downloadfile",
+      "src_agents_04_asset_collector_generatepollinations",
+      "src_agents_04_asset_collector_run",
+      "src_agents_04_asset_collector_saveasset",
+      "src_agents_04_asset_collector_searchpexels"
+    ],
+    "6": [
+      "src_lib_drive_listprojects",
+      "src_pipeline",
+      "src_pipeline_args",
+      "src_pipeline_listallprojects",
+      "src_pipeline_main",
+      "src_pipeline_parser",
+      "src_pipeline_resumeproject",
+      "src_pipeline_runfullpipeline",
+      "src_pipeline_runspecificagent"
+    ],
+    "7": [
+      "scraper",
+      "scraper_cache_dir",
+      "scraper_cacheget",
+      "scraper_cachekey",
+      "scraper_cacheset",
+      "scraper_run"
+    ],
+    "8": [
+      "config_index",
+      "config_index_drive_mount",
+      "config_index_homedir",
+      "config_index_output_base",
+      "config_index_resolvepath"
+    ],
+    "9": [
+      "claude_hooks_validate_json",
+      "claude_hooks_validate_json_filepaths",
+      "claude_hooks_validate_json_fs"
+    ]
+  },
+  "cohesion": {
+    "0": 0.08695652173913043,
+    "1": 0.24761904761904763,
+    "2": 0.2,
+    "3": 0.11764705882352941,
+    "4": 0.3484848484848485,
+    "5": 0.37777777777777777,
+    "6": 0.3611111111111111,
+    "7": 0.5333333333333333,
+    "8": 0.4,
+    "9": 0.6666666666666666
+  },
+  "gods": [
+    {
+      "id": "src_lib_drive_getprojectpath",
+      "label": "getProjectPath()",
+      "degree": 17
+    },
+    {
+      "id": "src_lib_drive_loadstate",
+      "label": "loadState()",
+      "degree": 16
+    },
+    {
+      "id": "src_lib_drive_updateagentstatus",
+      "label": "updateAgentStatus()",
+      "degree": 15
+    },
+    {
+      "id": "src_agents_06_editor_run",
+      "label": "run()",
+      "degree": 12
+    },
+    {
+      "id": "src_agents_04_asset_collector_run",
+      "label": "run()",
+      "degree": 11
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 8
+    },
+    {
+      "id": "src_agents_02_researcher_run",
+      "label": "run()",
+      "degree": 7
+    },
+    {
+      "id": "src_agents_05_audio_designer_run",
+      "label": "run()",
+      "degree": 7
+    },
+    {
+      "id": "src_lib_drive_savejson",
+      "label": "saveJson()",
+      "degree": 7
+    },
+    {
+      "id": "src_lib_llm_generatescript",
+      "label": "generateScript()",
+      "degree": 7
+    }
+  ],
+  "surprises": [
+    {
+      "source": "run()",
+      "target": "getProjectPath()",
+      "source_files": [
+        "src/agents/02_researcher.js",
+        "src/lib/drive.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "run()",
+      "target": "loadState()",
+      "source_files": [
+        "src/agents/02_researcher.js",
+        "src/lib/drive.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "run()",
+      "target": "saveText()",
+      "source_files": [
+        "src/agents/02_researcher.js",
+        "src/lib/drive.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "run()",
+      "target": "updateAgentStatus()",
+      "source_files": [
+        "src/agents/02_researcher.js",
+        "src/lib/drive.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "run()",
+      "target": "generateScript()",
+      "source_files": [
+        "src/agents/03_scriptwriter.js",
+        "src/lib/llm.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `dependencies` to `package.json`?",
+      "why": "High betweenness centrality (0.062) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `updateAgentStatus()` connect `drive.js` to `02_researcher.js`, `06_editor.js`, `04_asset_collector.js`?",
+      "why": "High betweenness centrality (0.038) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `getProjectPath()` connect `drive.js` to `02_researcher.js`, `06_editor.js`, `04_asset_collector.js`, `pipeline.js`?",
+      "why": "High betweenness centrality (0.036) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `fs`, `filePaths`, `homedir` to the rest of the system?",
+      "why": "35 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `package.json` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `dependencies` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

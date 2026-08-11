@@ -1,6 +1,7 @@
 import { chromium } from 'playwright';
 import { loadState, saveText, updateAgentStatus, getProjectPath } from '../lib/drive.js';
 import { summarizeResearch } from '../lib/llm.js';
+import { cacheGet, cacheSet, cacheKey } from '../lib/cache.js';
 import fs from 'fs';
 
 /**
@@ -19,11 +20,19 @@ import fs from 'fs';
  * @returns {Promise<string>}
  */
 async function scrapeWikipedia(topic) {
+  const cacheKeyStr = cacheKey('wikipedia', topic.toLowerCase());
+  const cached = cacheGet(cacheKeyStr);
+  if (cached !== null) {
+    console.log(`   ⚡ Wikipedia: cache hit for "${topic}"`);
+    return cached;
+  }
+
   const searchUrl = `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(topic)}`;
 
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
 
+  let content = '';
   try {
     await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
 
@@ -40,7 +49,7 @@ async function scrapeWikipedia(topic) {
     }
 
     // Extract main content
-    const content = await page.evaluate(() => {
+    content = await page.evaluate(() => {
       const title = document.querySelector('#firstHeading')?.textContent || '';
       const paragraphs = Array.from(document.querySelectorAll('#mw-content-text p'))
         .map(p => p.textContent.trim())
@@ -49,10 +58,14 @@ async function scrapeWikipedia(topic) {
       return `# ${title}\n\n${paragraphs}`;
     });
 
+    // Cache only non-empty scrapes (7-day TTL)
+    if (content.trim()) {
+      cacheSet(cacheKeyStr, content, { ttlSeconds: 7 * 24 * 3600 });
+    }
     return content;
   } catch (error) {
     console.error(`   ⚠️ Wikipedia scrape error: ${error.message}`);
-    return '';
+    return content;
   } finally {
     await browser.close();
   }

@@ -1,0 +1,107 @@
+{
+  ".claude/hooks/validate-json.cjs": {
+    "mtime": 1786344094.003053,
+    "ast_hash": "6ee8b76f371da5a974d9c2d8307f7251",
+    "semantic_hash": "6ee8b76f371da5a974d9c2d8307f7251"
+  },
+  "config/index.js": {
+    "mtime": 1786344070.6450546,
+    "ast_hash": "ae98b69d0935e2c572561bb6084f5f4d",
+    "semantic_hash": "ae98b69d0935e2c572561bb6084f5f4d"
+  },
+  "package.json": {
+    "mtime": 1786344399.0750313,
+    "ast_hash": "9fed03e5f0a68d5675e81668f992b1dd",
+    "semantic_hash": "9fed03e5f0a68d5675e81668f992b1dd"
+  },
+  "scraper.js": {
+    "mtime": 1786344376.8560328,
+    "ast_hash": "f68e6da94402630e3a07b278a6fee835",
+    "semantic_hash": "f68e6da94402630e3a07b278a6fee835"
+  },
+  "src/agents/01_topic_hunter.js": {
+    "mtime": 1786271335.5581853,
+    "ast_hash": "0b80f5025a8af0d416fd8588385e0964",
+    "semantic_hash": "0b80f5025a8af0d416fd8588385e0964"
+  },
+  "src/agents/02_researcher.js": {
+    "mtime": 1786343903.6890666,
+    "ast_hash": "9817ce0b3c5273606d0eba5895626a4d",
+    "semantic_hash": "9817ce0b3c5273606d0eba5895626a4d"
+  },
+  "src/agents/03_scriptwriter.js": {
+    "mtime": 1786271472.3921835,
+    "ast_hash": "4190555c41e728f7ed7160ee3bc51be3",
+    "semantic_hash": "4190555c41e728f7ed7160ee3bc51be3"
+  },
+  "src/agents/04_asset_collector.js": {
+    "mtime": 1786281306.9370422,
+    "ast_hash": "d4ad46484e57489298ecad60b5ebca73",
+    "semantic_hash": "d4ad46484e57489298ecad60b5ebca73"
+  },
+  "src/agents/05_audio_designer.js": {
+    "mtime": 1786344056.3560557,
+    "ast_hash": "0e10db1892075648e0ecb80ad446668b",
+    "semantic_hash": "0e10db1892075648e0ecb80ad446668b"
+  },
+  "src/agents/06_editor.js": {
+    "mtime": 1786281253.712043,
+    "ast_hash": "bedb890ce35e1ee9fdbefbf2f2dc4639",
+    "semantic_hash": "bedb890ce35e1ee9fdbefbf2f2dc4639"
+  },
+  "src/lib/cache.js": {
+    "mtime": 1786343867.8950691,
+    "ast_hash": "00eccc6e4a6fe1e1da32b9478c358f7c",
+    "semantic_hash": "00eccc6e4a6fe1e1da32b9478c358f7c"
+  },
+  "src/lib/drive.js": {
+    "mtime": 1786271244.5181868,
+    "ast_hash": "58a887a16f38828315d0f6da0d152416",
+    "semantic_hash": "58a887a16f38828315d0f6da0d152416"
+  },
+  "src/lib/llm.js": {
+    "mtime": 1786278405.964084,
+    "ast_hash": "72fd20b353bfef51a3365a20650c7378",
+    "semantic_hash": "72fd20b353bfef51a3365a20650c7378"
+  },
+  "src/pipeline.js": {
+    "mtime": 1786281560.8720386,
+    "ast_hash": "fa0439a8ef97f460ceddc63baf59cf46",
+    "semantic_hash": "fa0439a8ef97f460ceddc63baf59cf46"
+  },
+  "~/gdrive/documentary-factory/projects/2026-08-09_steve-jobs/05_audio/voiceover/segment_01.wav": {
+    "mtime": 1786278609.007081,
+    "ast_hash": "b868749d794d4e176d1980473cab689b",
+    "semantic_hash": "b868749d794d4e176d1980473cab689b"
+  },
+  "~/gdrive/documentary-factory/projects/2026-08-09_steve-jobs/05_audio/voiceover/segment_02.wav": {
+    "mtime": 1786278612.108081,
+    "ast_hash": "42121e008fa28661d59e5be7f4ce73b7",
+    "semantic_hash": "42121e008fa28661d59e5be7f4ce73b7"
+  },
+  "~/gdrive/documentary-factory/projects/2026-08-09_steve-jobs/05_audio/voiceover/segment_03.wav": {
+    "mtime": 1786278614.041081,
+    "ast_hash": "ef57d739d3c79c23e23bcdf5188376c3",
+    "semantic_hash": "ef57d739d3c79c23e23bcdf5188376c3"
+  },
+  "~/gdrive/documentary-factory/projects/2026-08-09_steve-jobs/05_audio/voiceover/segment_04.wav": {
+    "mtime": 1786278616.4140809,
+    "ast_hash": "30ad35856ebd5c8321da79c8a3652e7b",
+    "semantic_hash": "30ad35856ebd5c8321da79c8a3652e7b"
+  },
+  "~/gdrive/documentary-factory/projects/2026-08-09_steve-jobs/05_audio/voiceover/segment_05.wav": {
+    "mtime": 1786278618.1410809,
+    "ast_hash": "bd319c9f8cc73a96c828bfd8a7b080da",
+    "semantic_hash": "bd319c9f8cc73a96c828bfd8a7b080da"
+  },
+  "~/gdrive/documentary-factory/projects/2026-08-09_steve-jobs/05_audio/voiceover/segment_06.wav": {
+    "mtime": 1786278621.126081,
+    "ast_hash": "c8d6cf736ef55024c8f634afc8ea32a0",
+    "semantic_hash": "c8d6cf736ef55024c8f634afc8ea32a0"
+  },
+  "~/gdrive/documentary-factory/projects/2026-08-09_steve-jobs/05_audio/voiceover/segment_07.wav": {
+    "mtime": 1786278622.7500808,
+    "ast_hash": "d7cf2e2a9e51b89dc73a9bea0afe660c",
+    "semantic_hash": "d7cf2e2a9e51b89dc73a9bea0afe660c"
+  }
+}
