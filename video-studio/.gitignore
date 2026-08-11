@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Rendered previews / stills
+output/
+
+# Generated per-project asset store (copied by scripts/prepare-project.mjs)
+public/runtime/
+
+# Remotion cache
+.remotion/
+
+# Logs
+*.log
