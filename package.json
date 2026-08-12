@@ -10,6 +10,7 @@
     "agent": "node src/pipeline.js --mode agent",
     "preview": "node src/pipeline.js --mode preview",
     "render": "node src/pipeline.js --mode render",
+    "youtube": "node video-studio/scripts/mix-pipeline.mjs",
     "scrape": "node scraper.js",
     "install-browsers": "npx playwright install chromium"
   },

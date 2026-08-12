@@ -22,6 +22,7 @@ import scriptwriter from './agents/03_scriptwriter.js';
 import assetCollector from './agents/04_asset_collector.js';
 import audioDesigner from './agents/05_audio_designer.js';
 import editor from './agents/06_editor.js';
+import { mix } from '../video-studio/scripts/mix-pipeline.mjs';
 
 // Parse command line arguments
 const parser = new argparse.ArgumentParser({
@@ -60,6 +61,11 @@ parser.add_argument('--duration', {
 parser.add_argument('--skip-checkpoint', {
   action: 'store_true',
   help: 'Skip the 5s script review pause and 3s asset review pause'
+});
+
+parser.add_argument('--youtube', {
+  action: 'store_true',
+  help: 'After rendering, run the Phase 3 mix (music + ducking + SFX + loudnorm) to produce a YouTube-ready final_video_youtube.mp4'
 });
 
 const args = parser.parse_args();
@@ -114,6 +120,14 @@ async function runFullPipeline(topic, category, duration) {
   // Agent 6: Editor (Ken Burns)
   const { videoPath, localPath } = await editor.run(projectId);
 
+  // Phase 3 (optional): YouTube-ready mix — music + ducking + SFX + loudnorm
+  let mixResult = null;
+  if (args.youtube) {
+    console.log('\n🎧 Phase 3: Running YouTube audio mix...');
+    mixResult = await mix(projectId, {});
+    console.log(`   📺 YouTube-ready deliverable: ${mixResult.out}`);
+  }
+
   console.log('\n' + '='.repeat(70));
   console.log('✅ DOCUMENTARY COMPLETE');
   console.log('='.repeat(70));
@@ -122,13 +136,16 @@ async function runFullPipeline(topic, category, duration) {
   if (localPath) {
     console.log(`💾 Video (local): ${localPath}`);
   }
+  if (mixResult) {
+    console.log(`📺 YouTube-ready (Drive): ${mixResult.out}`);
+  }
   console.log(`📂 All files: ~/gdrive/documentary-factory/projects/${projectId}/`);
   console.log('\n🚀 Next steps:');
   console.log('   1. Download the video (prefer local path if Drive is flaky)');
   console.log('   2. Upload to YouTube manually');
   console.log('   3. Add thumbnails, tags, and description\n');
 
-  return { projectId, videoPath, localPath };
+  return { projectId, videoPath, localPath, mixResult };
 }
 
 /**
@@ -159,6 +176,13 @@ async function resumeProject(projectId) {
     } else {
       console.log(`   ⏭️  Skipping ${agent.name} (already completed)`);
     }
+  }
+
+  // Phase 3 (optional): YouTube-ready mix on the editor output
+  if (args.youtube) {
+    console.log('\n🎧 Phase 3: Running YouTube audio mix...');
+    const mixResult = await mix(projectId, {});
+    console.log(`   📺 YouTube-ready deliverable: ${mixResult.out}`);
   }
 
   console.log('\n✅ Pipeline resumed successfully');

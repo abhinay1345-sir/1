@@ -9,7 +9,8 @@
     "build": "remotion render src/index.ts main-video output/video.mp4",
     "build:preview": "remotion render src/index.ts main-video output/preview.mp4 --scale=0.5",
     "still": "remotion still src/index.ts main-video output/frame.png --frame=30",
-    "compositions": "remotion compositions src/index.ts"
+    "compositions": "remotion compositions src/index.ts",
+    "mix": "node scripts/mix-pipeline.mjs"
   },
   "keywords": [
     "remotion",

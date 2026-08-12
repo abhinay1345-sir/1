@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "ffmpeg": {
+      "source": "digitalsamba/claude-code-video-toolkit",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ffmpeg/SKILL.md",
+      "computedHash": "51fa05bc18bb2691e622aefd1d8ec6d4d96a9e9c44cdf599003c9d6003d11a07"
+    },
+    "remotion-motion-graphics": {
+      "source": "haidrrrry/claude-remotion-skill",
+      "sourceType": "github",
+      "skillPath": "remotion-motion-graphics/SKILL.md",
+      "computedHash": "103eaf41230579dcd7b7c7a1e227577e6d7ba88209fd3998e93e3de9ee9bdbd8"
+    },
+    "remotion-video-director": {
+      "source": "BayramAnnakov/remotion-video-director",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "207315ebbe09f563065dd6d5f8cb41c9e931a0b123a4ca9fbc7692c6733c9a40"
+    }
+  }
+}

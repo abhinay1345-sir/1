@@ -1,8 +1,9 @@
 # Documentary-Factory — Project Status & Progress
 
-> **Updated:** 2026-08-11
+> **Updated:** 2026-08-12
 > This document is a living overview of the entire project: what it is, what's been built, what's completed, what's in progress, what's next, and every file we've created. Keep it updated as work proceeds.
 > **Phase 2 is now ✅ COMPLETE** — full Steve Jobs render verified with real assets + audio (see §5).
+> **Phase 3 is now ✅ COMPLETE** — the YouTube-ready mix is wired into the pipeline via `--youtube` (see §6–§8).
 
 ---
 
@@ -40,7 +41,7 @@ Projects live in the Google Drive mount: `~/gdrive/documentary-factory/projects/
 |-------|-------------|--------|
 | **Phase 1** | FFmpeg MVP — full 6-agent pipeline produces a Ken Burns video | ✅ **COMPLETE** |
 | **Phase 2** | Remotion visual studio — cinematic Ken Burns, title/lower-third/end-card overlays | ✅ **COMPLETE** — full Steve Jobs render verified with assets + audio |
-| **Phase 3** | Audio polish — background music, SFX, ducking, YouTube-ready render | ⏸️ **NOT STARTED** |
+| **Phase 3** | Audio polish — background music, SFX, ducking, YouTube-ready render | ✅ **COMPLETE** — mix rendered, verified, and wired into the pipeline via `--youtube` |
 
 ---
 
@@ -118,6 +119,8 @@ video-studio/
 
 **Phase 2 is complete.** The Remotion studio renders correctly and the full Steve Jobs documentary — all 7 segments, real images, overlays, and voiceover audio — renders end-to-end at 1080p with audio mixed in. The video is committed and reproducible with the commands in §8.
 
+**Phase 3 is now complete too.** The YouTube-ready mix (CC-BY music bed ducked under voiceover + whoosh SFX at transitions + −14 LUFS loudnorm) is fully wired into the pipeline: `npm run create -- --youtube` / `npm run resume -- --youtube` run it automatically after the 06 Editor, and `npm run youtube -- --project <id>` runs it standalone. Verified end-to-end on Steve Jobs → `06_render/final_video_youtube.mp4` published to Drive.
+
 ### Issues fixed along the way
 | Issue | Fix |
 |-------|-----|
@@ -147,15 +150,21 @@ video-studio/
 - [x] **Full 1080p render** — `output/steve-jobs-1080p.mp4` — 1920×1080, 30fps, 164.99s, 15 MB.
 - [x] **Commit `video-studio/` to git** — commit `ef4d59b` (15 files; `node_modules/`, `output/`, `public/runtime/` git-ignored).
 
-### Phase 3 — Audio polish (NOT STARTED)
-- [ ] Background music track (the `05_audio/music/` and `05_audio/sfx/` folders exist but are **empty** for the Steve Jobs project).
-- [ ] SFX / whooshes on transitions.
-- [ ] Audio ducking (voiceover ducks under music).
-- [ ] Loudness normalization + YouTube-ready render settings (sample rate, audio codec AAC).
-- [ ] Possibly mix with ffmpeg (Phase 1 editor) or inside Remotion.
+### Phase 3 — Audio polish (COMPLETE)
+- [x] **Background music** — *"Lightless Dawn"* by Kevin MacLeod (CC-BY 4.0) in `05_audio/music/`; trimmed to 165s with 2.5s fades. Credit in video description: *Music: "Lightless Dawn" Kevin MacLeod (incompetech.com), CC BY 4.0*.
+- [x] **SFX / whooshes** — ffmpeg-synthesized rising noise-sweep whoosh (0.9s, no licensing) in `05_audio/sfx/`, placed at all 8 transitions.
+- [x] **Audio ducking** — music bed ducks under voiceover via ffmpeg `sidechaincompress` (threshold 0.02, ratio 12).
+- [x] **Loudness normalization + YouTube-ready** — linear two-pass `loudnorm` to **−14 LUFS** (measured −13.98), TP −1.5, AAC 48kHz 192k; video stream **copied** (no generational loss).
+- [x] **Deliverable** — `video-studio/output/steve-jobs-youtube.mp4` (1920×1080, 164.9s, 12.4 MB) + `06_render/final_video_youtube.mp4`.
+- [x] **Reproducible** — `video-studio/scripts/mix_youtube.sh` runs the whole mix from master + music + whoosh.
+- [x] **Wired into the pipeline** — `npm run create/resume -- --youtube` runs the mix automatically after the 06 Editor; `npm run youtube -- --project <id>` runs it standalone.
+  - `video-studio/scripts/mix-pipeline.mjs` — project-aware wrapper: resolves master/music/whoosh (project `05_audio/` → bundled `scripts/assets/`), computes whoosh timings from the project's real voiceover WAV durations, then drives `mix_youtube.sh`.
+  - Shared CC-BY music + synthesized whoosh now live in `video-studio/scripts/assets/` (fallback defaults for any project).
+  - **Fix:** final pass renders to local temp first — `+faststart` needs to seek, which rclone/gdrive FUSE mounts reject ("Illegal seek"). Publish uses `rclone copyto`, verified against the byte-identical local file.
+  - **Verified end-to-end:** `npm run youtube -- --project 2026-08-09_steve-jobs` → `final_video_youtube.mp4` (h264 1080p30 copied, AAC 48kHz stereo, mean −17.8 dB / max −1.3 dB, no clipping) published to Drive.
 
 ### Future / Integration
-- [ ] Wire `prepare-project.mjs` + Remotion render into the pipeline (e.g. as an alternative to the FFmpeg `06_editor.js`).
+- [ ] Wire `prepare-project.mjs` + Remotion render into the pipeline (e.g. as an alternative to the FFmpeg `06_editor.js`). The `--youtube` mix step works on any video+voiceover master, so it can be reused verbatim once the Remotion path is a pipeline stage.
 
 ---
 
@@ -164,8 +173,11 @@ video-studio/
 ### Pipeline (repo root `/workspaces/1`)
 ```bash
 npm run create -- --topic "Steve Jobs" [--category biography] [--duration 25]
+npm run create -- --topic "Steve Jobs" --youtube        # + Phase 3 YouTube-ready mix
 npm run resume -- --project 2026-08-09_steve-jobs
+npm run resume -- --project 2026-08-09_steve-jobs --youtube
 npm run agent -- --project 2026-08-09_steve-jobs --agent 05
+npm run youtube -- --project 2026-08-09_steve-jobs     # Phase 3 mix standalone (writes 06_render/final_video_youtube.mp4)
 npm run list
 ```
 
@@ -174,6 +186,7 @@ npm run list
 npm install                        # install deps
 node scripts/prepare-project.mjs --project /home/codespace/gdrive/documentary-factory/projects/2026-08-09_steve-jobs
 npm run compositions               # verify compositions register
+npm run mix -- --project /home/codespace/gdrive/documentary-factory/projects/2026-08-09_steve-jobs   # Phase 3 mix standalone (same as root npm run youtube)
 npm run still                      # render still.png (default props)
 npx remotion still src/index.ts main-video output/still-steve.png --props=public/runtime/2026-08-09_steve-jobs/props.json
 npx remotion render src/index.ts main-video output/steve-jobs.mp4 --props=public/runtime/2026-08-09_steve-jobs/props.json --scale=0.5
@@ -222,3 +235,6 @@ Located at: `~/gdrive/documentary-factory/projects/2026-08-09_steve-jobs/`
 | `src/lib/cache.js` | Disk cache for scrapes |
 | `scraper.js` | Standalone Playwright scraper |
 | `video-studio/` | Remotion studio (Phase 2/3) |
+| `video-studio/scripts/mix_youtube.sh` | Phase 3 audio mix: music + ducking + SFX + loudnorm → YouTube-ready |
+| `video-studio/scripts/mix-pipeline.mjs` | Pipeline bridge: resolves assets, computes whoosh timings from voiceover durations, drives `mix_youtube.sh` |
+| `video-studio/scripts/assets/` | Shared CC-BY music (`music.mp3`) + synthesized whoosh (`whoosh.wav`) — fallback defaults for the mix |
