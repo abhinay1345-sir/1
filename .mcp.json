@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "huggingface": {
+      "type": "http",
+      "url": "https://huggingface.co/mcp?login"
+    },
+    "supabase": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp?project_ref=lsihmnibxwmqqigkjsyy&features=docs%2Caccount%2Cdatabase%2Cdebugging%2Cdevelopment%2Cfunctions%2Cbranching&redirect_uri=https%3A%2F%2Fideal-space-funicular-qv97r4pvp7rxf9wp9-3118.app.github.dev%2Fcallback"
+    }
+  }
+}
