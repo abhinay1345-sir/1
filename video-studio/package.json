@@ -4,13 +4,20 @@
   "description": "Remotion video studio for creating beautiful videos",
   "main": "index.js",
   "scripts": {
-    "start": "remotion studio src/index.ts",
+    "start": "remotion studio src/index.tsx",
     "prepare:project": "node scripts/prepare-project.mjs",
-    "build": "remotion render src/index.ts main-video output/video.mp4",
-    "build:preview": "remotion render src/index.ts main-video output/preview.mp4 --scale=0.5",
-    "still": "remotion still src/index.ts main-video output/frame.png --frame=30",
-    "compositions": "remotion compositions src/index.ts",
-    "mix": "node scripts/mix-pipeline.mjs"
+    "build": "remotion render src/index.tsx main-video output/video.mp4",
+    "build:preview": "remotion render src/index.tsx main-video output/preview.mp4 --scale=0.5",
+    "still": "remotion still src/index.tsx main-video output/frame.png --frame=30",
+    "compositions": "remotion compositions src/index.tsx",
+    "mix": "node scripts/mix-pipeline.mjs",
+    "mix:edison": "node scripts/mix-edison.mjs",
+    "edison:manifest": "node scripts/sync-edison-assets.mjs",
+    "build:edison": "remotion render src/index.tsx edison-video output/edison.mp4",
+    "build:edison:preview": "remotion render src/index.tsx edison-video output/edison-preview.mp4 --scale=0.5",
+    "still:edison": "remotion still src/index.tsx edison-video output/edison-frame.png --frame=100",
+    "compositions:edison": "remotion compositions src/index.tsx --filter=edison",
+    "qc:edison": "bash scripts/qc-edison.sh"
   },
   "keywords": [
     "remotion",

@@ -338,7 +338,7 @@ pip3 install edge-tts
 
 ### Environment Variables (.env)
 ```env
-ANTHROPIC_API_KEY=sk-ant-...
+ANTHROPIC_API_KEY=sk-...
 PEXELS_API_KEY=your-pexels-key
 STABILITY_API_KEY=your-stability-key  # optional, has free tier
 SUNO_API_KEY=your-suno-key             # optional, for AI music

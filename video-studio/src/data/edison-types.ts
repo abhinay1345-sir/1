@@ -9,6 +9,9 @@ export type EdisonSegment = {
   durationSec: number;
   narration: string;
   shots: EdisonShot[];
+  // Runtime-added fields (populated in edison-script.ts)
+  startFrame?: number;
+  endFrame?: number;
 };
 
 export type EdisonShot = {
@@ -26,3 +29,8 @@ export type EdisonProps = {
   subtitle?: string;
   audioFile?: string;
 };
+
+// Composition constants
+export const FPS = 25;
+export const WIDTH = 1280;
+export const HEIGHT = 720;
